@@ -69,9 +69,34 @@ class Controller extends BaseController
     public function checkImage($folder)
     {
         $namagambar = '';
-        $jumlahgambar = count(File::allFiles(public_path('/images/' . $folder)));
-        if ($jumlahgambar > 0) {
-            $namagambar = url('images/' . $folder . '/1.png');
+        if (File::isDirectory(public_path('images/' . $folder))) {
+            # code...
+            $jumlahgambar = count(File::allFiles(public_path('images/' . $folder)));
+            if ($jumlahgambar > 0) {
+                $namagambar = url('images/' . $folder . '/1.png');
+            } else {
+                $namagambar = url('images/default.jpg');
+            }
+        } else {
+            $namagambar = url('images/default.jpg');
+        }
+        return $namagambar;
+    }
+
+    public function itemImages($folder)
+    {
+        $namagambar = '';
+        if (File::isDirectory(public_path('images/' . $folder))) {
+            $jumlahgambar = count(File::allFiles(public_path('images/' . $folder)));
+            if ($jumlahgambar > 0) {
+                $gambar = File::allFiles(public_path('images/' . $folder));
+                for ($i = 0; $i < $jumlahgambar; $i++) {
+                    $namagambar[$i] = $gambar[$i];
+                }
+                $namagambar = url('images/' . $folder . '/1.png');
+            } else {
+                $namagambar = url('images/default.jpg');
+            }
         } else {
             $namagambar = url('images/default.jpg');
         }
