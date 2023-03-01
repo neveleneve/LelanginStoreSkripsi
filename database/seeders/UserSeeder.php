@@ -44,8 +44,8 @@ class UserSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Sule',
-                'username' => 'sule123',
+                'name' => 'Gianluigi',
+                'username' => 'gianluigi10',
                 'email' => 'peserta@gmail.com',
                 'password' => Hash::make('peserta'),
                 'role' => '3',

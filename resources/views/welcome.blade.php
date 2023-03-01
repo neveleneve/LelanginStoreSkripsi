@@ -71,8 +71,8 @@
             <hr class="hr mt-0">
             <div class="row justify-content-center mb-3">
                 @forelse ($databaru as $item)
-                    <div class="col-12 col-lg-3 mb-3 mb-lg-0 d-lg-flex align-items-lg-stretch">
-                        <div class="card">
+                    <div class="col-12 col-lg-3 mb-3 mb-lg-0">
+                        <div class="card h-100">
                             <div class="ratio ratio-1x1 bg-image">
                                 <img src="{{ App\Http\Controllers\Controller::checkImage($item->id_item . '_' . $item->id_user) }}"
                                     class="card-img-top object-cover object-center" alt="Fissure in Sandstone">
@@ -121,7 +121,7 @@
             <hr>
         @endif
         {{-- List barang hampir selesai --}}
-        @if (count($dataselesai) > 0)
+        @if (count($datahampirselesai) > 0)
             <div class="row justify-content-center">
                 <div class="col">
                     <h2 class="h3 fw-bold">Hampir Selesai</h2>
@@ -136,9 +136,77 @@
             </div>
             <hr class="hr mt-0">
             <div class="row justify-content-center mb-3">
+                @forelse ($datahampirselesai as $item)
+                    <div class="col-12 col-lg-3 mb-3 mb-lg-0">
+                        <div class="card h-100">
+                            <a class="fw-bold text-dark"
+                                href="{{ route('viewitem', ['id' => base64_encode($item->id_item . '|' . $item->id . '|' . $item->username)]) }}">
+                                <div class="ratio ratio-1x1 bg-image">
+                                    <img src="{{ App\Http\Controllers\Controller::checkImage($item->id_item . '_' . $item->id_user) }}"
+                                        class="card-img-top object-cover object-center" alt="Fissure in Sandstone">
+                                    <div class="mask" style="background-color: rgba(0, 0, 0, 0.1)"></div>
+                                </div>
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title h6">
+                                    <a class="fw-bold text-dark"
+                                        href="{{ route('viewitem', ['id' => base64_encode($item->id_item . '|' . $item->id . '|' . $item->username)]) }}">
+                                        {{ strtoupper($item->name) }}
+                                    </a>
+                                    <br>
+                                    @if ($item->start_date > date('Y-m-d H:i:s'))
+                                        <span class="badge bg-warning">Belum dimulai</span>
+                                    @elseif ($item->start_date < date('Y-m-d H:i:s') && $item->end_date > date('Y-m-d H:i:s'))
+                                        <span class="badge bg-primary">Berlangsung</span>
+                                    @elseif ($item->end_date < date('Y-m-d H:i:s'))
+                                        <span class="badge bg-danger">Sudah Berakhir</span>
+                                    @endif
+                                </h5>
+                                <small>by
+                                    <a class="text-dark fw-bold"
+                                        href="{{ route('viewprofile', ['id' => $item->username]) }}">
+                                        {{ strtolower($item->username) }}
+                                    </a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-12">
+                        <h3 class="text-center">Data Kosong</h3>
+                    </div>
+                @endforelse
+            </div>
+            <div class="row justify-content-center d-block d-lg-none">
+                <div class="col-12 text-center">
+                    <a class="fw-bold text-dark" href="{{ route('endsoon') }}">
+                        <u>
+                            Lihat Lainnya
+                        </u>
+                    </a>
+                </div>
+            </div>
+            <hr>
+        @endif
+        {{-- sudah selesai --}}
+        @if (count($dataselesai) > 0)
+            <div class="row justify-content-center">
+                <div class="col">
+                    <h2 class="h3 fw-bold">Lelang Selesai</h2>
+                </div>
+                <div class="col-12 col-lg-6 mb-3 mb-lg-2 d-none d-lg-block text-end">
+                    <a href="{{ route('ended') }}" class="h6 text-dark">
+                        <u>
+                            Lihat lainnya
+                        </u>
+                    </a>
+                </div>
+            </div>
+            <hr class="hr mt-0">
+            <div class="row justify-content-center mb-3">
                 @forelse ($dataselesai as $item)
-                    <div class="col-12 col-lg-3 mb-3 mb-lg-0 d-lg-flex align-items-lg-stretch">
-                        <div class="card">
+                    <div class="col-12 col-lg-3 mb-3 mb-lg-0">
+                        <div class="card h-100">
                             <a class="fw-bold text-dark"
                                 href="{{ route('viewitem', ['id' => base64_encode($item->id_item . '|' . $item->id . '|' . $item->username)]) }}">
                                 <div class="ratio ratio-1x1 bg-image">

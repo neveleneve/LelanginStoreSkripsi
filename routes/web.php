@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@landing')->name('landing');
 Route::get('started-soon', 'HomeController@startsoon')->name('startsoon');
 Route::get('ended-soon', 'HomeController@endsoon')->name('endsoon');
+Route::get('ended', 'HomeController@ended')->name('ended');
 Route::get('profile/{id}', 'HomeController@viewprofile')->name('viewprofile');
 Route::get('item/{id}', 'HomeController@viewitem')->name('viewitem');
 

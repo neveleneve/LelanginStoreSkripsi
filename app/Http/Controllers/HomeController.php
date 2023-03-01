@@ -42,9 +42,19 @@ class HomeController extends Controller
                 'users.username',
                 'items.*'
             ]);
+        $dataselesai = Item::join('users', 'items.id_user', '=', 'users.id')
+            ->orderBy('end_date', 'asc')
+            ->where('end_date', '<', date('Y-m-d H:i:s'))
+            ->take(4)
+            ->get([
+                'users.id as id_user',
+                'users.username',
+                'items.*'
+            ]);
         return view('welcome', [
             'databaru' => $dataterbaru,
-            'dataselesai' => $datahampirselesai,
+            'datahampirselesai' => $datahampirselesai,
+            'dataselesai' => $dataselesai,
         ]);
     }
 

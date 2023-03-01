@@ -54,6 +54,12 @@
                                     <span class="badge bg-danger">Sudah Berakhir</span>
                                 @endif
                             </div>
+                            <div class="col-12">
+                                by <a class="text-dark fw-bold"
+                                    href="{{ route('viewprofile', ['id' => $item->username]) }}">
+                                    {{ $item->username }}
+                                </a>
+                            </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-12">
@@ -71,7 +77,8 @@
                         <div class="row mb-3">
                             <div class="col-12">
                                 <h5 class="fw-bold">Tanggal Tutup Lelang</h5>
-                                <h6 class="fw-bold">{{ App\Http\Controllers\Controller::tanggalIndo($item->end_date) }}</h6>
+                                <h6 class="fw-bold">{{ App\Http\Controllers\Controller::tanggalIndo($item->end_date) }}
+                                </h6>
                             </div>
                         </div>
                         @if ($item->start_date < date('Y-m-d H:i:s') && $item->end_date > date('Y-m-d H:i:s'))
