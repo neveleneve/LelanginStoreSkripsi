@@ -112,6 +112,7 @@ class HomeController extends Controller
                 ];
             }
         } catch (\Throwable $th) {
+            dd($th);
             Alert::alert('Oops!', 'Item yang kamu ingin kunjungi tidak tersedia!', 'warning');
             return redirect(route('landing'));
         }

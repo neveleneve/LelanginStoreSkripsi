@@ -19,7 +19,7 @@
                                     @for ($i = 0; $i < $gambar; $i++)
                                         <div class="carousel-item ratio ratio-1x1 bg-image{{ $i == 0 ? ' active' : '' }}">
                                             <img class="img img-fluid img-responsive object-cover object-center"
-                                                src="{{ url('images/' . $item->id_item . '_' . $item->id_user . '/' . ($i + 1) . '.png') }}">
+                                                src="{{ App\Http\Controllers\Controller::itemImages($item->id_item . '_' . $item->id_user)  }}">
                                             <div class="mask" style="background-color: rgba(0, 0, 0, 0.1)"></div>
                                         </div>
                                     @endfor

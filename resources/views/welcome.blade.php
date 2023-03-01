@@ -72,7 +72,11 @@
             <div class="row justify-content-center mb-3">
                 @forelse ($databaru as $item)
                     <div class="col-12 col-lg-3 mb-3 mb-lg-0">
+<<<<<<< HEAD
                         <div class="card h-100">
+=======
+                        <div class="card">
+>>>>>>> 8ee5839a039d6eae5bc049035330fefc1333eda0
                             <div class="ratio ratio-1x1 bg-image">
                                 <img src="{{ App\Http\Controllers\Controller::checkImage($item->id_item . '_' . $item->id_user) }}"
                                     class="card-img-top object-cover object-center" alt="Fissure in Sandstone">
@@ -205,8 +209,13 @@
             <hr class="hr mt-0">
             <div class="row justify-content-center mb-3">
                 @forelse ($dataselesai as $item)
+<<<<<<< HEAD
                     <div class="col-12 col-lg-3 mb-3 mb-lg-0">
                         <div class="card h-100">
+=======
+                    <div class="col-12 col-lg-3 mb-3 mb-lg-0 ">
+                        <div class="card">
+>>>>>>> 8ee5839a039d6eae5bc049035330fefc1333eda0
                             <a class="fw-bold text-dark"
                                 href="{{ route('viewitem', ['id' => base64_encode($item->id_item . '|' . $item->id . '|' . $item->username)]) }}">
                                 <div class="ratio ratio-1x1 bg-image">
